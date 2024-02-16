@@ -1,0 +1,6 @@
+command 1st :- git init
+git status
+git add .
+git commit -m "HII my name is nikhil"
+git remote add origin (gi0thub link...............)
+git push -u origin master

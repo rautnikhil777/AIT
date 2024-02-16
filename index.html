@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Management System</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 20px;
+      background-color: #f5f5f5;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #4caf50;
+      padding: 10px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px;
+      margin-right: 10px;
+    }
+
+    nav a:hover {
+      background-color: #45a049;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    h3 {
+      color: #333;
+    }
+
+    #eventList {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .event {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 10px;
+      margin: 10px 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .event strong {
+      color: #4caf50;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Event Management System</h1>
+  </header>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Contact</a>
+    <a href="#">Address</a>
+  </nav>
+
+  <h2>Add Event</h2>
+
+  <form id="eventForm">
+    <label for="eventName">Event Name:</label>
+    <input type="text" id="eventName" required>
+
+    <label for="eventDate">Event Date:</label>
+    <input type="date" id="eventDate" required>
+
+    <button type="button" onclick="addEvent()">Add Event</button>
+  </form>
+
+  <h3>Event List</h3>
+  <ul id="eventList"></ul>
+
+  <script>
+    function addEvent() {
+      // Get input values
+      var eventName = document.getElementById('eventName').value;
+      var eventDate = document.getElementById('eventDate').value;
+
+      // Validate inputs
+      if (!eventName || !eventDate) {
+        alert("Please fill in all fields");
+        return;
+      }
+
+      // Create event object
+      var event = {
+        name: eventName,
+        date: eventDate
+      };
+
+      // Add event to the list
+      var eventList = document.getElementById('eventList');
+      var listItem = document.createElement('li');
+      listItem.className = 'event';
+      listItem.innerHTML = `<strong>${event.name}</strong> - ${event.date}`;
+      eventList.appendChild(listItem);
+
+      // Clear form inputs
+      document.getElementById('eventName').value = '';
+      document.getElementById('eventDate').value = '';
+    }
+  </script>
+
+</body>
+</html>
